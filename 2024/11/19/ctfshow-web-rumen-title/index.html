@@ -24,10 +24,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="​             ctfshow web 入门之信息搜集20题 ​                                    竟然还要花钱，只能从网上找具体解析了（希望能把知识点掌握了吧） 第一题：使用F12快捷键对网站进行审计，可以在元素板块内的中找到flag ​                ![](D:\hexo\source\images\ctfshow web入门1">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="d:\hexo\source\images\ctfshow web %E5%85%A5%E9%97%A82.png">
 <meta property="article:published_time" content="2024-11-19T06:50:37.130Z">
-<meta property="article:modified_time" content="2024-11-19T07:31:39.175Z">
+<meta property="article:modified_time" content="2024-11-19T08:57:18.494Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:\hexo\source\images\ctfshow web %E5%85%A5%E9%97%A82.png">
   
   <!-- 样式表文件 -->
   <link rel="stylesheet" id="kratos-css" href="/css/kr-core.min.css" media="all"></link>
@@ -148,7 +150,7 @@
                         <i class="fa fa-edit"></i> 
                         
                         
-                            330
+                            ~2.70K
                         
                         字
                     </li>
@@ -168,7 +170,36 @@
 <p>​                ![](D:\hexo\source\images\ctfshow web入门1.png)</p>
 <p>知识点：（1）注意到flag左右添加了&lt;!–       &gt;,这在HTML中是一种用于注释语句的标签，可以让其中内容无法在浏览器中显示。</p>
 <p>​                （2）F12是绝大多数浏览器自带的快捷功能，用于审计</p>
-<p>第二题：</p>
+<p>第二题：想像上一题一样用F12解决问题（想也没用毕竟没钱买题），会发现无法打开，也无法使用右键选择”查看主页源代码“选项，</p>
+<p>​                那就必须换一种方式查看。</p>
+<p>​                <img src="D:\hexo\source\images\ctfshow web 入门2.png" style="zoom: 50%;" /></p>
+<p>​                 sir, this way.</p>
+<p>​                 或者通过在URL的前面加上view-source:，就可以显示出网页源代码了。</p>
+<p>知识点：(1)通过网页源代码我们可能会发现有禁用鼠标右键等功能的语句，要学会灵活使用其他方法。</p>
+<p>​               (2)view-source是一种在网页使用的功能，它允许用户查看当前网页源代码（可以被禁用），具体做法为view-source:URL</p>
+<p>第三题：尝试前两题所有方法后并未发现flag，这时就要换一个思路，搜集的信息应不止一种。</p>
+<p>​                请求包与响应包的概念已学过，此时应该看看里面有没有猫腻，使用浏览器自带的工具即可。</p>
+<p>​               ![](D:\hexo\source\images\ctfshow web 入门3.png)</p>
+<p>​               点开网络界面刷新即可看到请求包与响应包</p>
+<p>知识点：有关请求包的内容：1.请求行：方法字段 URL字段 协议版本</p>
+<p>​                                                   2.请求体：Accept-Charset：浏览器可以接受的字符编码（如UTF-8）</p>
+<p>​                                                                      Accept-Encoding：指定浏览器可以支持的web服务器返回内容压缩编码方式。编码方式不同于                        </p>
+<p>​                                                                      文件格式，它是为了压缩文件并加速文件传递速度。浏览器在接收到Web响应之后先解码，然 </p>
+<p>​                                                                      后再检查文件格式。</p>
+<p>​                                                                      Accept-Language：指出浏览器可以接受的语言种类，如en或en-us，指英语。</p>
+<p>​                                                                      Authorization：HTTP授权的授权证书。</p>
+<p>​                                                                      Referer：表明产生请求的网页URL。如比从网页A中点击一个链接到网 </p>
+<p>​                                                                      页B，在向服务器发送的GET&#x2F;B中的请求中，Referer是web名称+端口号+A，这个属性可以用来</p>
+<p>​                                                                      跟踪Web请求是从什么网站来的。</p>
+<p>​                                                                      Cache-Control：指定请求和响应遵循的缓存机制</p>
+<p>​                                                                      Connection：表示是否需要持久连接。（HTTP 1.1默认进行持久连接）</p>
+<p>​                                                                      Cookie：HTTP请求发送时，会把保存在该请求域名下的所有cookie值一起发送给web服务器。 </p>
+<p>​                                                                      cookie其实就是一些数据信息，类型为“小型文本文件”，存储于电脑上的文本文件中。</p>
+<p>​                                                                      Content-Length：请求的内容长度</p>
+<p>​                                                                      Content-Type：请求的内容类型</p>
+<p>​                                                                      User-Agent：是客户浏览器名称</p>
+<p>​                                                                      Host：对应网址URL中的Web名称和端口号。</p>
+<p>第四题：</p>
 </div>
         </div>
         
@@ -191,7 +222,7 @@
                     
                 </div>
                 <div class="pull-date">
-                    <time datetime="2024-11-19T07:31:39.175Z" itemprop="dateModified">最后编辑：2024-11-19</time>
+                    <time datetime="2024-11-19T08:57:18.494Z" itemprop="dateModified">最后编辑：2024-11-19</time>
                 </div>
             </div>
         </footer>
